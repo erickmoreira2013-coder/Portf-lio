@@ -1,0 +1,278 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Sempre que quiser escolher uma dessas cores abaixo, basta digitar por exemplo: var(--primary-color) */
+:root {
+    --primaria: #4f46e5;
+    --secundaria: #7c3aed;
+    --escuro: #0f172a;
+    --mais-escuro: #0a0f1c;
+    --claro: #e2e8f0;
+    --vidro: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    color: var(--claro);
+    background-color: #0a0f1c;
+}
+
+.navegacao {
+    position: fixed;
+    background: linear-gradient(to right, var(--mais-escuro), var(--primaria), var(--mais-escuro));
+    width: 100%;
+    z-index: 100;
+    padding: 1.5rem;
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+    gap: 3rem;
+    justify-content: center;
+}
+
+.menu-link {
+    text-decoration: none;
+    color: var(--claro);
+    position: relative;
+    padding: 0.5rem 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* O ::after é um pseudo-elemento que cria uma linha abaixo do link, mas inicialmente com largura 0 */
+.menu-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--claro), var(--claro));
+    left: 0;
+    bottom: 0;
+    transition: width 0.3s ease;
+}
+
+/* Quando o mouse passar por cima do link, a linha vai crescer até 100% */
+.menu-link:hover::after {
+    width: 100%;
+}
+
+.cabecalho {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.foto-perfil {
+    margin-top: 30px;
+    width: 300px;
+    height: 300px;
+    box-shadow: 0 0 20px rgba(79, 70, 229, 0.3);
+    border-radius: 50%;
+    border: 2px solid var(--vidro);
+    animation: flutuar 5s ease-in-out infinite;
+}
+
+@keyframes flutuar {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+h1 {
+    font-size: 3.4rem;
+    margin-top: 10px;
+    color: var(--claro)
+}
+
+.cabecalho-sub-titulo {
+    font-size: 1.1rem;
+    color: var(--claro)
+}
+
+.container-imagens {
+  display: flex;            /* Ativa o modo flexbox */
+  justify-content: center;   /* Centraliza as imagens horizontalmente */
+  gap: 30px;                /* Cria um espaço uniforme entre elas */
+  padding: 30px;
+}
+
+.container-imagens img {
+  width: 30px;          /* Faz com que cada imagem ocupe quase 1/3 da largura */
+  height: auto;         /* Mantém a proporção da imagem */
+  object-fit: cover;    /* Garante que elas fiquem cortadas uniformemente se tiverem tamanhos diferentes */
+}
+
+/* Ajuste para Celulares */
+@media (max-width: 40px) {
+  .container-imagens {
+    flex-direction: column; /* No celular, elas ficam uma abaixo da outra */
+    align-items: center;
+  }
+  
+  .container-imagens img {
+    width: 90%;             /* Aumenta a largura no mobile para ocupar quase a tela toda */
+  }
+}
+
+.sobre {
+    padding: 6rem 2rem;
+}
+
+/*sobre mim*/
+.sobre-titulo {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--claro);
+    text-align: center;
+}
+
+.sobre-caixa {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 16px;
+    border: 1px solid var(--vidro);
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.sobre-paragrafo {
+    text-align: justify;
+}
+
+.projetos {
+    padding: 6rem 2rem;
+}
+
+.projetos-titulo {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+.projetos-card:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 10px 20px rgba(79, 70, 229, 0.2);
+}
+
+.projetos-caixa {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    width: 1200px;
+    margin: auto;
+}
+
+.projetos-card {
+    border-radius: 16px;
+    border: 1px solid var(--vidro);
+    backdrop-filter: blur(5px);
+    background: rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.projetos-imagem {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* título dentro do card */
+.info-projetos {
+    margin-bottom: 10px;
+}
+
+.paragrafo {
+    padding: 1rem;
+}
+
+.caixa-textos-projeto {
+    padding: 1.2rem;
+
+}
+
+.contato {
+    padding: 6rem 2rem;
+}
+
+.contato-titulo {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+.formulario-contato {
+    max-width: 600px;
+    margin: 0 auto;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border: 1px solid var(--vidro);
+    border-radius: 16px;
+}
+
+.campo-form {
+    width: 100%;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    color: var(--claro);
+    border: 1px solid var(--vidro);
+    outline: none;
+}
+
+.campo-form-textarea {
+    height: 150px;
+    width: 100%;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    color: var(--claro);
+    border: 1px solid var(--vidro);
+    outline: none;  23REDF 
+}
+
+.campo-form:focus {
+    border-color: var(--claro);
+    box-shadow: 0 0 10px var(--vidro);
+}
+.campo-form-textarea:focus {
+    border-color: var(--claro);
+    box-shadow: 0 0 10px var(--vidro);
+}
+
+.grupo-form {
+    margin-bottom: 1.5rem;
+}
+
+.botao-form {
+    background: var(--primaria);
+    color: #fff;
+    border: 1px solid var(--vidro);
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.5s ease;
+    width: 100%;
+    font-size: 16px;
+}
